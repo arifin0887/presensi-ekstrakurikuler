@@ -254,8 +254,12 @@ ob_end_flush();
                     </ul>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete(<?= $row['id_pembina'] ?>)">Hapus</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete(<?= $row['id_pembina'] ?>)">
+                      <i class="bi bi-trash me-1"></i>Hapus
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
+                      <i class="bi bi-x-circle me-1"></i>Tutup
+                    </button>
                   </div>
                 </div>
               </div>
@@ -343,7 +347,9 @@ ob_end_flush();
           <button type="submit" class="btn btn-success">
             <i class="bi bi-save"></i> Simpan
           </button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="bi bi-x-circle me-1"></i>Batal
+          </button>
         </div>
       </form>
     </div>

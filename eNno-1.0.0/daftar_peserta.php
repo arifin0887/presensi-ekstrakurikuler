@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nis'])) {
                             <i class="bi bi-trash me-1"></i> Hapus
                         </button>
                 
-                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
                           <i class="bi bi-x-circle me-1"></i> Tutup
                         </button>
                       </div>
@@ -171,10 +171,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nis'])) {
                           </div>
                           <div class="mt-4 text-end">
                             <button type="submit" class="btn btn-success">
-                              <i class="bi bi-save me-1"></i> Update
+                               Update
                             </button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                              <i class="bi bi-x-circle me-1"></i> Batal
+                               Batal
                             </button>
                           </div>
                         </form>

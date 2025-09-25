@@ -95,11 +95,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nis'])) {
                   <td><?= htmlspecialchars($row['nama']) ?></td>
                   <td><?= htmlspecialchars($row['kelas_lengkap']) ?></td>
                   <td>
-                    <button class="btn btn-sm btn-outline-info me-1" data-bs-toggle="modal" data-bs-target="#detailModal<?= $row['nis']; ?>">
-                      <i class="bi bi-eye"></i>
-                    </button>
                     <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal<?= $row['nis']; ?>">
                       <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-info me-1" data-bs-toggle="modal" data-bs-target="#detailModal<?= $row['nis']; ?>">
+                      <i class="bi bi-eye"></i>
                     </button>
                   </td>
                 </tr>
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nis'])) {
                         <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete('<?= $row['nis'] ?>')">
                           <i class="bi bi-trash me-1"></i> Hapus
                         </button>
-                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
                           <i class="bi bi-x-circle me-1"></i> Tutup
                         </button>
                       </div>
@@ -165,10 +165,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nis'])) {
                         </div>
                         <div class="modal-footer">
                           <button type="submit" class="btn btn-success">
-                            <i class="bi bi-save me-1"></i> Update
+                            </i> Update
                           </button> 
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="bi bi-x-circle me-1"></i> Batal
+                             Batal
                           </button>
                         </div>
                       </form>
@@ -193,7 +193,7 @@ function confirmDelete(nis) {
         text: "Peserta akan dihapus dari ekstrakurikuler ini!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#16a34a',
+        confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Ya, hapus!',
         cancelButtonText: 'Batal'

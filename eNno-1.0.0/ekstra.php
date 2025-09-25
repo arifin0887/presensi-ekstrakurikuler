@@ -263,9 +263,9 @@ if (isset($_GET['hapus'])) {
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete(<?= (int)$row['id_ekstra'] ?>)">
-                                                Hapus
+                                                <i class="bi bi-trash me-1"></i>Hapus
                                             </button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Tutup</button>
                                         </div>
                                     </div>
                                 </div>
@@ -288,7 +288,7 @@ if (isset($_GET['hapus'])) {
 <div class="modal fade" id="tambahEkstraModal" tabindex="-1" aria-labelledby="tambahEkstraModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
+            <div class="modal-header bg-success text-white">
                 <h5 class="modal-title" id="tambahEkstraModalLabel">Tambah Ekstrakurikuler</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -336,8 +336,8 @@ if (isset($_GET['hapus'])) {
                     </div>
 
                     <div class="modal-footer mt-4">
-                        <button type="submit" name="tambah_ekstra" class="btn btn-primary">Simpan</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" name="tambah_ekstra" class="btn btn-success"><i class="bi bi-save"></i> Simpan</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Batal</button>
                     </div>
 
                 </form>
