@@ -7,6 +7,8 @@
   <link href="assets/img/smk.png" rel="icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome untuk ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -101,7 +103,7 @@
 
     /* Fitur Section */
     .features {
-      background: #fff;
+      background: #f0f8ff; /* Warna latar belakang yang lebih terang */
       color: #333;
       padding: 80px 20px;
       text-align: center;
@@ -109,25 +111,66 @@
 
     .features h2 {
       font-weight: 700;
-      margin-bottom: 40px;
+      margin-bottom: 50px; /* Sedikit lebih banyak ruang */
       color: #2980b9;
+      position: relative;
+    }
+
+    .features h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: #FFBC00; /* Garis bawah yang menarik */
+      border-radius: 2px;
     }
 
     .feature-box {
       padding: 30px;
       border-radius: 15px;
-      background: #f8f9fa;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      background: #ffffff; /* Latar belakang putih */
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Bayangan yang lebih lembut */
+      transition: transform 0.4s ease, box-shadow 0.4s ease; /* Transisi untuk bayangan juga */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px; /* Tinggi minimum agar konsisten */
+      border: 1px solid #e0e0e0; /* Border halus */
     }
 
     .feature-box:hover {
-      transform: translateY(-10px);
+      transform: translateY(-12px); /* Efek angkat yang sedikit lebih tinggi */
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15); /* Bayangan yang lebih kuat saat di-hover */
+    }
+
+    .feature-box .icon {
+      font-size: 3.5rem; /* Ukuran ikon lebih besar */
+      color: #2980b9; /* Warna ikon yang konsisten */
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .feature-box:hover .icon {
+      color: #FFBC00; /* Perubahan warna ikon saat di-hover */
     }
 
     .feature-box h5 {
       font-weight: 600;
-      margin-top: 15px;
+      margin-top: 0; /* Hapus margin top default */
+      color: #333;
+      font-size: 1.3rem; /* Ukuran font sedikit lebih besar */
+    }
+
+    .feature-box {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
     /* Footer */
@@ -182,32 +225,98 @@
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="features">
+  <!-- Ekstrakurikuler Section -->
+  <section class="features py-5 section-bg">
     <div class="container">
-      <h2>Kenapa Memilih EkstraKu?</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="feature-box">
-            <img src="https://img.icons8.com/color/96/000000/easy.png" alt="Mudah Digunakan">
-            <h5>Mudah Digunakan</h5>
-            <p>Antarmuka yang sederhana, cepat dipahami oleh siswa, pembina, dan admin.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-box">
-            <img src="https://img.icons8.com/color/96/000000/computer.png" alt="Responsif">
-            <h5>Responsif</h5>
-            <p>Bisa diakses dari laptop maupun smartphone dengan tampilan menyesuaikan.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-box">
-            <img src="https://img.icons8.com/color/96/000000/online.png" alt="Realtime">
-            <h5>Realtime</h5>
-            <p>Presensi tercatat secara langsung dan dapat dipantau kapan saja.</p>
-          </div>
-        </div>
+      <h2 class="text-center mb-5">Ekstrakurikuler di SMK N 2 Magelang</h2>
+      <div class="row g-4 justify-content-center">
+        <?php
+        include 'koneksi.php'; 
+
+        // Ambil data ekstra + pembina
+        $sql = "SELECT e.id_ekstra, e.nama_ekstra, e.hari, p.nama 
+                FROM tb_ekstrakurikuler e
+                LEFT JOIN tb_pembina p ON e.id_pembina = p.id_pembina
+                ORDER BY e.nama_ekstra ASC";
+        $result = $pdo->query($sql);
+        $ekstrakurikuler = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        // Mapping nama ekstra ke ikon Font Awesome
+        $icon_map = [
+            'Pasopati' => 'fa-campground',
+            'Tonti' => 'fa-flag',
+            'Basket' => 'fa-basketball-ball',
+            'Futsal' => 'fa-futbol',
+            'Volly' => 'fa-volleyball-ball',
+            'Tari' => 'fa-mask',
+            'Band' => 'fa-music',
+            'OSIS' => 'fa-users',
+            'padus' => 'fa-microphone',
+            'PMR' => 'fa-briefcase-medical',
+            'Cospala' => 'fa-hiking',
+            'Screen' => 'fa-camera',
+            'Rohis' => 'fa-mosque',
+            // 'Karate' => 'fa-hand-rock',
+            // 'Pencak Silat' => 'fa-fist-raised',
+            // 'Rohkris' => 'fa-church',
+            // 'Screen' => 'fa-newspaper',
+            // 'Desain Grafis' => 'fa-palette',
+            // 'Web Programming' => 'fa-code',
+            // Default icon
+            'default' => 'fa-shapes'
+        ];
+
+        if (count($ekstrakurikuler) > 0) {
+          foreach ($ekstrakurikuler as $ekstra) {
+            $nama_ekstra = htmlspecialchars($ekstra['nama_ekstra']);
+            $jadwal      = !empty($ekstra['hari']) ? htmlspecialchars($ekstra['hari']) : null;
+            $pembina     = !empty($ekstra['nama']) ? htmlspecialchars($ekstra['nama']) : null;
+            $id_ekstra   = $ekstra['id_ekstra'];
+
+            // pilih ikon sesuai nama ekstra
+            $icon_class = isset($icon_map[$nama_ekstra]) ? $icon_map[$nama_ekstra] : $icon_map['default'];
+            ?>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <div class="feature-box shadow-sm p-4 h-100 rounded bg-white text-center">
+                
+                <!-- Ikon -->
+                <div class="icon mb-3 text-primary fs-1">
+                  <i class="fas <?= $icon_class; ?>"></i>
+                </div>
+
+                <!-- Nama -->
+                <h5 class="fw-bold mb-2"><?= $nama_ekstra; ?></h5>
+
+                <!-- Jadwal -->
+                <?php if ($jadwal): ?>
+                  <small class="d-block mb-1">
+                    <i class="fas fa-calendar-alt"></i> <?= $jadwal; ?>
+                  </small>
+                <?php endif; ?>
+
+                <!-- Pembina -->
+                <?php if ($pembina): ?>
+                  <small class="d-block mb-2">
+                    <i class="fas fa-user-tie"></i> Pembina: <?= $pembina; ?>
+                  </small>
+                <?php endif; ?>
+
+                <!-- Tombol -->
+                <div class="mt-3">
+                  <a href="detail_ekstra.php?id=<?= $id_ekstra; ?>" 
+                    class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                    <i class="fas fa-info-circle"></i> Lihat Detail
+                  </a>
+                </div>
+
+              </div>
+            </div>
+            <?php
+          }
+        } else {
+          echo "<p class='text-center col-12'>Belum ada data ekstrakurikuler.</p>";
+        }
+        ?>
       </div>
     </div>
   </section>
