@@ -302,12 +302,12 @@
                 <?php endif; ?>
 
                 <!-- Tombol -->
-                <div class="mt-3">
+                <!-- <div class="mt-3">
                   <a href="detail_ekstra.php?id=<?= $id_ekstra; ?>" 
                     class="btn btn-outline-primary btn-sm rounded-pill px-3">
                     <i class="fas fa-info-circle"></i> Lihat Detail
                   </a>
-                </div>
+                </div> -->
 
               </div>
             </div>

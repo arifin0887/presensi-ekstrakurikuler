@@ -8,13 +8,12 @@ if (session_status() === PHP_SESSION_NONE) {
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <div class="d-flex align-items-center justify-content-between">
-        <a href="#" class="logo d-flex align-items-center">
-            <img src="../eNno-1.0.0/assets/img/smk.png" width="35px" alt="Logo">
-            <span class="d-none d-lg-block">EkstraKu</span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+    <div class="logo d-flex align-items-center" style="cursor:default;">
+        <img src="../eNno-1.0.0/assets/img/smk.png" width="35px" alt="Logo">
+        <span class="d-none d-lg-block">EkstraKu</span>
+        <i class="bi bi-list toggle-sidebar-btn" style="margin-left: 8rem;"></i>
+    </div>
+    <!-- End Logo -->
 
     <!-- <div class="search-bar">
         <form class="search-form d-flex align-items-center" method="POST" action="#">
